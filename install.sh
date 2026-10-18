@@ -1,7 +1,7 @@
 #!/bin/sh
 # macOS/Linux bootstrap. Run from a checkout or download the pinned release.
 set -eu
-REA_REBUILD_RELEASE=v1.0.0
+REA_REBUILD_RELEASE=v1.0.1
 if ! command -v node >/dev/null 2>&1; then
   echo 'Node.js is required. Install Node 22.19+, 24.11+, or 26+ from https://nodejs.org/, then rerun.' >&2
   exit 1

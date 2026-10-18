@@ -3,7 +3,7 @@
 import { spawnSync } from 'node:child_process';
 import { access, realpath } from 'node:fs/promises';
 import { constants } from 'node:fs';
-import { delimiter, dirname, join, resolve } from 'node:path';
+import { delimiter, dirname, join } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 
@@ -98,7 +98,7 @@ export async function ensureRea({
   return installed;
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (process.argv[1] && await realpath(process.argv[1]).catch(() => undefined) === fileURLToPath(import.meta.url)) {
   const flags = process.argv.slice(2);
   const unknown = flags.filter(flag => !['--check', '--install', '--dry-run'].includes(flag));
   try {

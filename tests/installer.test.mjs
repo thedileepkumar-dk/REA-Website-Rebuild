@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, readFile, writeFile, readdir, rm, symlink } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 import { ensureRea, supportsNode, findRea } from '../skills/rea-website-rebuild/scripts/ensure-rea.mjs';
 import { install, installFolder, parseArgs, planInstall } from '../scripts/install.mjs';
 
@@ -164,4 +166,18 @@ test('unrelated destination and symlink are preserved instead of overwritten', a
     await symlink(destination, link);
     await assert.rejects(installFolder(link, rea), /symlink/);
   }
+});
+
+test('installer and REA checker execute when launched through symlinked paths', { skip: process.platform === 'win32' }, async t => {
+  const home = await temporary(t);
+  const repository = fileURLToPath(new URL('../', import.meta.url));
+  const alias = join(home, 'linked checkout');
+  await symlink(repository, alias, 'dir');
+  const installer = spawnSync(process.execPath, [join(alias, 'scripts/install.mjs'), '--help'], { encoding: 'utf8' });
+  assert.equal(installer.status, 0, installer.stderr);
+  assert.match(installer.stdout, /REA Website Rebuild installer/);
+  // Invalid option proves the prerequisite helper ran, without touching the environment.
+  const checker = spawnSync(process.execPath, [join(alias, 'skills/rea-website-rebuild/scripts/ensure-rea.mjs'), '--invalid-fixture-option'], { encoding: 'utf8' });
+  assert.equal(checker.status, 1);
+  assert.match(checker.stderr, /Unknown option/);
 });

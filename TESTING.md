@@ -9,7 +9,7 @@ npm test
 python3 skills/rea-website-rebuild/scripts/test_helpers.py
 ```
 
-- **17 installer tests:** reuse working REA; install/verify ordering; failed installation; false-success prevention; missing-dependency diagnostics; runtime compatibility; managed entry discovery; agent selection; environment overrides; generic/custom destinations; dry runs; MCP failure; CLI-only mode; complete copying; backups; protection of unrelated destinations.
+- **18 installer tests:** reuse working REA; install/verify ordering; failed installation; false-success prevention; missing-dependency diagnostics; runtime compatibility; managed entry discovery; agent selection; environment overrides; generic/custom destinations; dry runs; MCP failure; CLI-only mode; complete copying; backups; protection of unrelated destinations; execution through symlinked paths.
 - **12 ledger-helper tests:** preserve existing files; reject invalid source URLs; fail empty scope, incomplete work and missing evidence; enforce mock authorization and labels; reject mocks in the production profile; retain source uncertainty; validate required checks.
 - Skill frontmatter/naming validation with the Codex skill-creator validator.
 - POSIX launcher syntax and actual local shell dry run.

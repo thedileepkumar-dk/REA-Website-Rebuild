@@ -58,13 +58,13 @@ The launcher handles REA and skill installation together. **Node.js with npm is 
 **macOS / Linux** — automatically detects supported local agent directories:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/thedileepkumar-dk/REA-Website-Rebuild/v1.0.0/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/thedileepkumar-dk/REA-Website-Rebuild/v1.0.1/install.sh | sh
 ```
 
 **Windows PowerShell**:
 
 ```powershell
-iex (irm https://raw.githubusercontent.com/thedileepkumar-dk/REA-Website-Rebuild/v1.0.0/install.ps1)
+iex (irm https://raw.githubusercontent.com/thedileepkumar-dk/REA-Website-Rebuild/v1.0.1/install.ps1)
 ```
 
 These commands execute this repository’s installer. You can inspect [install.sh](install.sh), [install.ps1](install.ps1) and the [Node installer](scripts/install.mjs) first, or download the bundle and run it locally.

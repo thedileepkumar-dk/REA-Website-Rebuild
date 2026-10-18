@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { cp, lstat, mkdir, readFile, rename, rm, writeFile, readdir } from 'node:fs/promises';
+import { cp, lstat, mkdir, readFile, realpath, rename, rm, writeFile, readdir } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -153,7 +153,7 @@ export async function install(options, {
   return { ...plan, installed, rea };
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (process.argv[1] && await realpath(process.argv[1]).catch(() => undefined) === fileURLToPath(import.meta.url)) {
   try {
     const options = parseArgs(process.argv.slice(2));
     if (options.help) console.log(help);

@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param([Parameter(ValueFromRemainingArguments = $true)][string[]]$InstallerArgs)
 $ErrorActionPreference = 'Stop'
-$release = 'v1.0.0'
+$release = 'v1.0.1'
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
     throw 'Node.js is required. Install Node 22.19+, 24.11+, or 26+ from https://nodejs.org/, then rerun.'
 }
