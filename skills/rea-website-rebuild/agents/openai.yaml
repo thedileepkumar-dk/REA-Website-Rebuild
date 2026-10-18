@@ -1,0 +1,4 @@
+interface:
+  display_name: "REA Website Rebuild"
+  short_description: "Rebuild website features with an original animated UI"
+  default_prompt: "Use $rea-website-rebuild to inspect this website with REA and rebuild its workflows with a unique, professional, animated interface."

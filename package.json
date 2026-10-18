@@ -1,0 +1,13 @@
+{
+  "name": "rea-website-rebuild",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-led website reconstruction with an original interface",
+  "license": "MIT",
+  "scripts": {
+    "install:skill": "node scripts/install.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:helpers": "python3 skills/rea-website-rebuild/scripts/test_helpers.py"
+  }
+}
